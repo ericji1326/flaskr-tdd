@@ -2,6 +2,7 @@ import sqlite3
 import os
 from pathlib import Path
 
+# DATABASE_URL=postgresql://ece444_lab3_demo_user:SAJdgSKBSF3Xrk6Eam4EGbISXkYClham@dpg-cruu0odds78s73a4r7v0-a.oregon-postgres.render.com/ece444_lab3_demo
 from flask import Flask, g, render_template, request, session, \
                   flash, redirect, url_for, abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
