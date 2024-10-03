@@ -1,5 +1,4 @@
 import json
-import os
 import pytest
 from pathlib import Path
 
@@ -86,19 +85,17 @@ def test_delete_message(client):
     rv = client.get("/delete/1")
     data = json.loads(rv.data)
     assert data["status"] == 1
-    
+
 
 def test_search_messages(client):
     """Ensure that searching works"""
     login(client, app.config["USERNAME"], app.config["PASSWORD"])
-    rv = client.get('/search/?query=<Hello>')
+    rv = client.get("/search/?query=<Hello>")
     assert b"&lt;Hello&gt;" not in rv.data
     rv = client.post(
         "/add",
         data=dict(title="<Hello>", text="<strong>HTML</strong> allowed here"),
         follow_redirects=True,
     )
-    rv = client.get('/search/?query=<Hello>')
+    rv = client.get("/search/?query=<Hello>")
     assert b"&lt;Hello&gt;" in rv.data
-    
-    
